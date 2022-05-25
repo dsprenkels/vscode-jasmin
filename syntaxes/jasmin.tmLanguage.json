@@ -13,11 +13,11 @@
 		},
 		{
 			"name": "storage.type.jasmin",
-			"match": "\\b(([us](8|16|32|64|128))|int)\\b"
+			"match": "\\b((\\d+u(8|16|32|64|128))|int)\\b"
 		},
 		{
 			"name": "storage.modifier.jasmin",
-			"match": "\\b(reg|stack|ptr|export|inline)\\b"
+			"match": "\\b(reg|stack|ptr|export|inline|param)\\b"
 		}
 	],
 	"repository": {
