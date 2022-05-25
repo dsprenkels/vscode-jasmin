@@ -1,0 +1,49 @@
+{
+    "name": "vscode-jasmin",
+    "displayName": "Jasmin Language",
+    "description": "Syntax highlighting for the Jasmin language",
+    "version": "0.1.0",
+    "repository": "github:dsprenkels/vscode-jasmin",
+    "license": "MIT",
+    "private": true,
+    "engines": {
+        "vscode": "^1.67.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "files": [
+        "syntaxes/**",
+        "language-configuration.json",
+        "package.json",
+        "package-lock.json",
+        "README.md",
+        "LICENSE.txt",
+        "CHANGELOG.md"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "jasmin",
+                "aliases": [
+                    "Jasmin",
+                    "jasmin"
+                ],
+                "extensions": [
+                    ".jazz"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "jasmin",
+                "scopeName": "source.jasmin",
+                "path": "./syntaxes/jasmin.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "vsce": "^2.8.0"
+    }
+}

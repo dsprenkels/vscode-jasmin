@@ -1,0 +1,124 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Jasmin",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"name": "storage.type.jasmin",
+			"match": "\\b(([us](8|16|32|64|128))|int)\\b"
+		},
+		{
+			"name": "storage.modifier.jasmin",
+			"match": "\\b(reg|stack|ptr|export|inline)\\b"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": "\\b(require|fn|for|while|return)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.jasmin",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.jasmin",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.jasmin",
+					"match": "^/\\* =(\\s*.*?)\\s*= \\*/$\\n?",
+					"captures": {
+						"1": {
+							"name": "meta.toc-list.banner.block.c"
+						}
+					}
+				},
+				{
+					"name": "comment.block.jasmin",
+					"begin": "/\\*",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.begin.c"
+						}
+					},
+					"end": "\\*/",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.end.c"
+						}
+					}
+				},
+				{
+					"name": "invalid.illegal.stray-comment-end.jasmin",
+					"match": "\\*/.*\\n"
+				},
+				{
+					"name": "comment.line.banner.jasmin",
+					"match": "^// =(\\s*.*?)\\s*=\\s*$\\n?",
+					"captures": {
+						"1": {
+							"name": "meta.toc-list.banner.line.c"
+						}
+					}
+				},
+				{
+					"begin": "(^[ \\t]+)?(?=//)",
+					"beginCaptures": {
+						"1": {
+							"name": "punctuation.whitespace.comment.leading.jasmin"
+						}
+					},
+					"end": "(?!\\G)",
+					"patterns": [
+						{
+							"begin": "//",
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.definition.comment.jasmin"
+								}
+							},
+							"end": "\\n",
+							"name": "comment.line.double-slash.jasmin",
+							"patterns": [
+								{
+									"include": "#line_continuation_character"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"line_continuation_character": {
+			"patterns": [
+				{
+					"match": "(\\\\)\\s*\\n",
+					"captures": {
+						"1": {
+							"name": "constant.character.escape.line-continuation.jasmin"
+						}
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.jasmin"
+}
